@@ -25,7 +25,8 @@ export const getDocument = async (id: string) => {
 export const getAllDocuments = async () => {
     try {
         const result = await db.allDocs({ include_docs: true })
-        return result.rows.map((row: any) => row.doc)
+        const documents = result.rows.map((row: any) => row.doc)
+        return documents.reverse()
     } catch (error) {
         console.error('Error getting all documents:', error)
     }
